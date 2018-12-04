@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string-array name="suburbs">
+        <item>2000, Barangaroo</item>
+        <item>3000, Melbourne</item>
+        <item>4000, Brisbane City</item>
+        <item>5000, Adelaide</item>
+        <item>6000, Perth</item>
+        <item>7000, Glebe</item>
+
+    </string-array>
+    <string-array name="compare">
+        <item> select</item>
+        <item> Electricity and Gas</item>
+        <item> Electricity </item>
+        <item> Gas</item>
+    </string-array>
+    <string-array name="property">
+        <item> select</item>
+        <item> Home</item>
+        <item> Business </item>
+        <item> Gas</item>
+    </string-array>
+    <string name="facebook_app_id">349810815780568</string>
+    <string name="fb_login_protocol_scheme">fb349810815780568</string>
+</resources>

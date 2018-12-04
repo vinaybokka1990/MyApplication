@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbackgroud"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".UtilitiesHome">
+
+
+    <Button
+        android:id="@+id/umElecButton"
+        android:layout_width="354dp"
+        android:layout_height="94dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/border_style"
+        android:drawableLeft="@drawable/idea"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:state_pressed="true"
+        android:text="Electricity"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/umElecGasButton"
+        android:layout_width="354dp"
+        android:layout_height="94dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/border_style"
+        android:drawableLeft="@drawable/gasandelec"
+        android:onClick="onClick"
+        android:text="Electricity and Gas"
+        android:textSize="24sp" />
+
+
+</LinearLayout>

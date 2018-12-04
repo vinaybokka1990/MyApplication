@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GassBillInfo"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:text="How do you prefer to enter Bill information?"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/gasBillManualButton"
+                android:layout_width="111dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:text="manual"
+                android:textColor="@color/Red" />
+
+            <Button
+                android:id="@+id/gasBillImageButton"
+                android:layout_width="111dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:text="image"
+                android:textColor="@color/Red" />
+
+            <Button
+                android:id="@+id/gasBillEmailButton"
+                android:layout_width="111dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:text="email"
+                android:textColor="@color/Red" />
+        </LinearLayout>
+                                <!-- Manual Layout-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/gasBillManualLayout">
+
+
+            <TextView
+                android:id="@+id/textView30002323"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:text="Who is your gas provider?"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editText232"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_style"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView3000112323"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:text="Bill Start Date"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editText23332"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_style"
+                android:ems="10"
+               android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView3000232323"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:text="Bill End Date"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editText233332"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_style"
+                android:ems="10"
+                android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/textView300023823"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:text="Total usage from bill?"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editText28832"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_style"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+
+    <!--Image Layout-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:id="@+id/gasBillImageLayout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Write code for image here"
+            android:id="@+id/tvgasBillImage"/>
+    </LinearLayout>
+
+    <!--EMAIL Layout-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:id="@+id/gasBillEmailLayout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Write code for email here"
+            android:id="@+id/tvgasBillEmail"
+            />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvGasBillSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="save"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

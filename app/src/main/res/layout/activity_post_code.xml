@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".PostCode">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:paddingTop="50dp"
+        android:text="Your Postcode"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/border_style"
+        android:drawableLeft="@drawable/pin"
+        android:gravity="center"
+        android:hint="Enter Postcode" />
+
+    <Button
+        android:id="@+id/pcStartBtn"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:background="@color/Blue"
+        android:text="Get Started"
+        android:textColor="@color/GhostWhite"
+        android:textSize="24sp" />
+
+</LinearLayout>

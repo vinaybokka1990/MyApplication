@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "552000482992",
+    "firebase_url": "https://myapplication-20a6b.firebaseio.com",
+    "project_id": "myapplication-20a6b",
+    "storage_bucket": "myapplication-20a6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552000482992:android:5d631295077112e4",
+        "android_client_info": {
+          "package_name": "com.example.klreddy.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552000482992-tm6h4befs2hsja8mctef04b9cu9holgh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDckMaI7OxPPBRVw5xpagKmq1llkjpYj6g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
