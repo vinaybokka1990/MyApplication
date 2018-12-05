@@ -14,6 +14,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -37,7 +44,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.ref.ReferenceQueue;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -50,8 +63,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ProgressDialog progressDialog;
     private static  final int RC_SIGN_IN=1;
     private static final String TAG="Message";
-    private GoogleApiClient googleApiClient;
     private GoogleSignInClient googleSignInClient;
+    RequestQueue requestQueue;
+    String loginurl="http://192.168.155.197/Ethical_Prospecting/checkCredentials.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +98,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
     }
     @Override
     public void onStart() {
@@ -151,7 +166,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.loginButton:
 
-                    userLogin();
+                    validateUserData();
 
                 break;
 
@@ -171,31 +186,43 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-//User Login
+//validating user data
 
-    private void userLogin()
+    private void validateUserData()
     {
 
-        String mailid= userName.getText().toString().trim();
-        String password=passWord .getText().toString().trim();
+       final String mailid= userName.getText().toString().trim();
+       final String password=passWord .getText().toString().trim();
 
 
         if(TextUtils.isEmpty(mailid))
         {
+            userName.setError("Please enter your email");
+            userName.requestFocus();
             Toast.makeText(this,"Please enter email id", Toast.LENGTH_LONG).show();
             return;
         }
 
         if(TextUtils.isEmpty(password))
         {
+            passWord.setError("Please enter your password");
+            passWord.requestFocus();
             Toast.makeText(this,"Please enter your password", Toast.LENGTH_LONG).show();
             return;
         }
+               //validating email
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(mailid).matches()) {
+            userName.setError("Enter a valid email");
+            userName.requestFocus();
+            return;
+        }
+
         progressDialog=new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage("sigining the user...");
         progressDialog.show();
 
-       firebaseAuth.signInWithEmailAndPassword(mailid, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+     /*  firebaseAuth.signInWithEmailAndPassword(mailid, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
            @Override
            public void onComplete(@NonNull Task<AuthResult> task) {
                progressDialog.dismiss();
@@ -212,10 +239,61 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                }
 
            }
-       });
+       });*/
+
+            loginUser(mailid,password);
 
     }
+    // user login
+private void loginUser(final String mailid,final String password)
+{
 
+    StringRequest stringRequest=new StringRequest(Request.Method.POST, loginurl, new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response)
+        {
+            progressDialog.dismiss();
+
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("error"))
+                {
+                    Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    int customerId = object.getInt("customerId");
+                    Toast.makeText(getApplicationContext(), object.getString("message")+" "+customerId, Toast.LENGTH_SHORT).show();
+
+                    startActivity(new Intent(LoginActivity.this, UtilitiesHome.class));
+                }
+
+            }catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    },new Response.ErrorListener()
+    {
+        public void onErrorResponse(VolleyError error)
+        {
+            progressDialog.dismiss();
+            Toast.makeText(LoginActivity.this, "Some error occurred -> "+error, Toast.LENGTH_LONG).show();;
+        }
+
+    }){
+        @Override
+        protected Map<String,String> getParams() throws AuthFailureError
+        {
+            Map<String, String> params=new HashMap<>();
+            params.put("userEmail",mailid);
+            params.put("password",password);
+
+            return params;
+        }
+    };
+    requestQueue.add(stringRequest);
+}
 //Google login
 
 
