@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private  EditText userName, passWord;
     private Button bLogin;
-    private ImageButton gLogin,fbLogin;
+    private TextView gLogin,fbLogin;
     private TextView registerLink, tvUpdate;
     private CallbackManager callbackManager;
     private FirebaseAuth firebaseAuth;
@@ -76,9 +76,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         userName = (EditText) findViewById(R.id.etUsername);
         passWord = (EditText) findViewById(R.id.etPwd);
         bLogin = (Button) findViewById(R.id.loginButton);
-        gLogin=(ImageButton)findViewById(R.id.googleButton);
+        gLogin=(TextView)findViewById(R.id.tvGoogle);
         registerLink = (TextView) findViewById(R.id.tvCreateUser);
-        fbLogin = (ImageButton)findViewById(R.id.fbButton);
+        fbLogin = (TextView)findViewById(R.id.tvFacebook);
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         bLogin.setOnClickListener(this);
         registerLink.setOnClickListener(this);
-        findViewById(R.id.googleButton).setOnClickListener(this);
+        findViewById(R.id.tvGoogle).setOnClickListener(this);
         fbLogin.setOnClickListener(this);
 
         // Configure Google Sign In
@@ -175,12 +175,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(this, RegisterActivity.class));
 
                 break;
-            case R.id.googleButton:
+            case R.id.tvGoogle:
 
                 googleSignIn();
 
                break;
-            case R.id.fbButton:
+            case R.id.tvFacebook:
                fbLogin();
         }
     }
