@@ -28,9 +28,10 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="opacityPercent" value="41" />
-                            <entry key="outputName" value="ic_add_a_photo_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\KL REDDY" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="opacityPercent" value="83" />
+                            <entry key="outputName" value="facebook" />
+                            <entry key="sourceFile" value="C:\Users\KL REDDY\Downloads\icons8-facebook.svg" />
                           </map>
                         </option>
                       </PersistentState>
